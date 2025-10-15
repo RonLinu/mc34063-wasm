@@ -1,0 +1,133 @@
+body {
+  font-weight: bold;
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  top: 0;
+  overflow-x: hidden;
+}
+
+.right {
+  right: 0;
+  background-color: Wheat;
+  color: black;
+}
+
+.right img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+/* For mobile devices only: don't show schematic right section */
+@media (max-width: 480px) {
+  .split {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  .right {
+    display: block; /*  none for hiding */
+    width: 100%;
+    position: relative;
+  }
+}
+
+.left {
+  left: 0;
+  background-color: LightCyan;
+  color: black;
+}
+
+
+.split.left {
+  display: flex;
+  flex-direction: column;       /* Stack children vertically */
+  justify-content: flex-start;  /* Center vertically */
+  align-items: center;          /* Center horizontally */
+  height: 100vh;                /* Full height */
+  padding: 10px;                /* Optional padding */
+}
+
+.split.left input {
+  margin: 8px 0;
+  width: 15%;
+  max-width: 300px;
+}
+
+.split.left button {
+  margin: 8px 0;
+  width: 50%;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  width: 250px;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;  /* space between rows */
+}
+
+.label-left {
+  width: 130px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.label-right {
+  width: 20px;
+  text-align: left;
+  white-space: nowrap;
+  font-size: 16px;
+}
+
+.label-range {
+  margin-left: 8px;
+  text-align: left;
+  white-space: nowrap;
+  color: green;
+  font-size: 15px;
+}
+
+#results {
+  font-size: 16px;
+}
+
+#regulator-name {
+  text-align: center;
+}
+
+#schematic {
+  display: flex;
+  justify-content: center;
+}
+
+#theImage {
+  border: 2px solid black;
+}
+
+/* Remove scroll buttons on number inputs in Chromium browsers */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove scroll buttons on number inputs in Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.swal2-popup {
+  border-radius: 20px;        /* rounded corners */
+}
+
