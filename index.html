@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<!-- MC34063 -->
+<!-- MC34063 - WASM -->
 <html lang="en">
 <head>
     <title>MC34063 - WASM</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11" onload="startWASM()"></script>
     <link rel="icon" type="image/png" href="mc34063/calculator.png">
 </head>
 
 <body>
     <script src="wasm_exec.js"></script>
-    
     <script>
-        const go = new Go();
-        WebAssembly.instantiateStreaming(fetch("mc34063.wasm"), go.importObject).then((result) => {
-          go.run(result.instance);
-        });
+        function startWASM() {
+            const go = new Go();
+            WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
+                go.run(result.instance);
+            });
+        }
     </script>
     
   <div class="split left">
