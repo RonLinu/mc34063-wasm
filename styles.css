@@ -106,12 +106,12 @@ body {
   text-align: center;
 }
 
-#schematic {
+#schematicDiv {
   display: flex;
   justify-content: center;
 }
 
-#theImage {
+#schematic {
   border: 2px solid black;
 }
 
