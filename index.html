@@ -15,7 +15,7 @@
     <script>
         function startWASM() {
             const go = new Go();
-            WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
+            WebAssembly.instantiateStreaming(fetch("mc34063.wasm"), go.importObject).then((result) => {
                 go.run(result.instance);
             });
         }
@@ -29,39 +29,39 @@
     <form>
       <div class="form-row">
         <label for="inputVoltage" class="label-left">Input voltage</label>
-        <input type="text" inputmode="numeric" id="vinField" value="24" oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-        <label for="inputVoltage" class="label-right" id="vinFieldUnit" >V</label>
-        <label for="inputVoltage" class="label-range" id="vinError">[5..40]</label>
+        <input type="text" inputmode="numeric" id="vin" value="24" oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+        <label for="inputVoltage" class="label-right" id="vinUnit" >V</label>
+        <label for="inputVoltage" class="label-range" id="vinRange">[5..40]</label>
       </div>
 
       <div class="form-row">
         <label for="outputVoltage" class="label-left">Output voltage</label>
-        <input type="text" inputmode="numeric" id="voutField" value="5" 
+        <input type="text" inputmode="numeric" id="vout" value="5" 
             oninput="this.value=this.value
             .replace(/[^0-9.\-]/g, '')
             .replace(/(?!^)-/g, '')
             .replace(/(\..*)\./g, '$1');">
-        <label for="outputVoltage" class="label-right" id="voutFieldUnit">V</label>
-        <label for="ouputVoltage" class="label-range" id="voutError">[-40..-3] [3..40]</label>
+        <label for="outputVoltage" class="label-right" id="voutUnit">V</label>
+        <label for="ouputVoltage" class="label-range" id="voutRange">[-40..-3] [3..40]</label>
       </div>
 
       <div class="form-row">
         <label for="outputCurrent" class="label-left">Output current</label>
-        <input type="text" inputmode="numeric" id="ioutField" value="100" oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-        <label for="outputCurrent" class="label-right" id="ioutFieldUnit">mA</label>
-        <label for="outputCurrent" class="label-range" id="ioutError">[5..1000]</label>
+        <input type="text" inputmode="numeric" id="iout" value="100" oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+        <label for="outputCurrent" class="label-right" id="ioutUnit">mA</label>
+        <label for="outputCurrent" class="label-range" id="ioutRange">[5..1000]</label>
       </div>
       <div class="form-row">
         <label for="frequency" class="label-left">Frequency</label>
-        <input type="text" inputmode="numeric" id="freqField" value="25" oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-        <label for="frequency" class="label-right" id="freqFieldUnit">KHz</label>
-        <label for="frequency" class="label-range" id="freqError">[20..100]</label>
+        <input type="text" inputmode="numeric" id="freq" value="25" oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+        <label for="frequency" class="label-right" id="freqUnit">KHz</label>
+        <label for="frequency" class="label-range" id="freqRange">[20..100]</label>
       </div>
       <div class="form-row">
         <label for="resistorR1" class="label-left">Resistor R1</label>
-        <input type="text" inputmode="numeric" id="res1Field" value="1" oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-        <label for="resistorR1" class="label-right" id="res1FieldUnit">KΩ</label>
-        <label for="resistorR1" class="label-range" id="res1Error">[1..50]</label>
+        <input type="text" inputmode="numeric" id="res1" value="1" oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+        <label for="resistorR1" class="label-right" id="res1Unit">KΩ</label>
+        <label for="resistorR1" class="label-range" id="res1Range">[1..50]</label>
       </div>
     </form>
 
