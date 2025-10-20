@@ -1,2 +1,2 @@
 # mc34063-wasm
-WASM version in Go of the same mc34063 web app
+WebAssembly version in Go of the mc34063 web application.
