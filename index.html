@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<!-- PENDU - WASM -->
+<!-- MC34063 - WASM -->
 <html lang="en">
 <head>
-    <title>Pendu - WASM</title>
+    <title>MC34063 - WASM</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="pendu/pendu_icon.png">
     <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11" onload="startWASM()"></script>
+    <link rel="icon" type="image/png" href="resources/calculator.png">
 </head>
 
 <body>
@@ -15,23 +15,75 @@
     <script>
         function startWASM() {
             const go = new Go();
-            WebAssembly.instantiateStreaming(fetch("pendu.wasm"), go.importObject).then((result) => {
+            WebAssembly.instantiateStreaming(fetch("mc34063.wasm"), go.importObject).then((result) => {
                 go.run(result.instance);
             });
         }
     </script>
     
-    <div id="header">
-      <ul id="scores"><br><br><br></ul>
+  <div class="split left">
+    <div class="left-content">
+      <h2 class="heading-center">MC34063 calculator</h2>
     </div>
     
-    <div id="stage">
-      <img id="gallows" src="resources/pendu_splash.png" alt="Image" width="250" height="250">
+    <form>
+      <div class="form-row">
+        <label for="inputVoltage" class="label-left">Input voltage</label>
+        <input type="text" inputmode="numeric" id="vin" value="24" oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+        <label for="inputVoltage" class="label-right" id="vinUnit" >V</label>
+        <label for="inputVoltage" class="label-range" id="vinRange">[5..40]</label>
+      </div>
+
+      <div class="form-row">
+        <label for="outputVoltage" class="label-left">Output voltage</label>
+        <input type="text" inputmode="numeric" id="vout" value="5" 
+            oninput="this.value=this.value
+            .replace(/[^0-9.\-]/g, '')
+            .replace(/(?!^)-/g, '')
+            .replace(/(\..*)\./g, '$1');">
+        <label for="outputVoltage" class="label-right" id="voutUnit">V</label>
+        <label for="ouputVoltage" class="label-range" id="voutRange">[-40..-3] [3..40]</label>
+      </div>
+
+      <div class="form-row">
+        <label for="outputCurrent" class="label-left">Output current</label>
+        <input type="text" inputmode="numeric" id="iout" value="100" oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+        <label for="outputCurrent" class="label-right" id="ioutUnit">mA</label>
+        <label for="outputCurrent" class="label-range" id="ioutRange">[5..1000]</label>
+      </div>
+      <div class="form-row">
+        <label for="frequency" class="label-left">Frequency</label>
+        <input type="text" inputmode="numeric" id="freq" value="25" oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+        <label for="frequency" class="label-right" id="freqUnit">KHz</label>
+        <label for="frequency" class="label-range" id="freqRange">[20..100]</label>
+      </div>
+      <div class="form-row">
+        <label for="resistorR1" class="label-left">Resistor R1</label>
+        <input type="text" inputmode="numeric" id="res1" value="1" oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+        <label for="resistorR1" class="label-right" id="res1Unit">KΩ</label>
+        <label for="resistorR1" class="label-range" id="res1Range">[1..50]</label>
+      </div>
+    </form>
+
+    <div class="button-row">
+      <button id="save" type="button">Save fields</button>
+      <button id="calculate" type="button">Calculate parts</button>
     </div>
 
-    <div id="footer">
+     <div id="results"></div>
+    
+    </div>  <!-- end of split left -->
+    
+      
+    <div class="split right">
+        <div>
+            <p id="regulator-name">Regulator name</p>
+        </div>
+
+    <div id="schematicDiv">
+         <img id="schematic" src="resources/splash.png" alt="Regulator schematic">
     </div>
-
-
+        
+    </div>
 </body>
 </html>
